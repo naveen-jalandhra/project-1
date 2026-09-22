@@ -24,8 +24,10 @@ export const LoginUser = () => {
   };
 
   let navigateFnc = () => {
-    let FinalCheck = CheckLogFnc;
-    FinalCheck ? navigate("/") : prompt("your Data is Incorrect");
+    let FinalCheck = CheckLogFnc();
+    if (FinalCheck === false) {
+      setRegistrationPanel(false);
+    }
   };
 
   return (

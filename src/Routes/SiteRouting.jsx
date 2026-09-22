@@ -8,6 +8,8 @@ import { Header } from "../Components/Dynamic-Components/Header";
 import { Footer } from "../Components/Dynamic-Components/Footer";
 import { Store } from "../Pages/Store";
 import { SignInCheckup } from "../Components/Dynamic-Components/SignInCheckup";
+import { RegisterUser } from "../Components/Dynamic-Components/RegisterUser";
+import { LoginUser } from "../Components/Dynamic-Components/LoginUser";
 
 let DynamicPages = () => {
   return (
@@ -32,6 +34,8 @@ export const SiteRouting = () => {
         { path: "/contact", element: <Contact /> },
         { path: "/service", element: <Service /> },
         { path: "/store", element: <Store /> },
+        { path: "/register", element: <RegisterUser /> },
+        { path: "/login", element: <LoginUser /> },
       ],
     },
   ]);

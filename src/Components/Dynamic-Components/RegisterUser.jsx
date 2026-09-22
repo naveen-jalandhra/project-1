@@ -30,6 +30,7 @@ export const RegisterUser = () => {
   let SetInputFieldVal = () => {
     setAccounts((Users) => [...Users, FieldData]);
     console.log(Accounts);
+    setRegistrationPanel(true);
   };
 
   return (
