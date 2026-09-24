@@ -1,9 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router"; // react-router-dom use karein
+import React, { useContext } from "react";
+import { NavLink, useNavigate } from "react-router"; // react-router-dom use karein
 // react-icons se icons import kar rahe hain (Fi = Feather Icons)
 import { FiSearch, FiUser, FiShoppingCart } from "react-icons/fi";
+import { MystoreContext } from "../Context/StoreContext";
 
 export const Header = () => {
+  const { CartPopUpToggle, setCartPopUpToggle } = useContext(MystoreContext);
+  let navigate = useNavigate();
   const navLinkStyle = ({ isActive }) =>
     `text-[15px] font-medium tracking-wide transition-all duration-300 ease-in-out pb-1 border-b-2 ${
       isActive
@@ -40,6 +43,9 @@ export const Header = () => {
             <NavLink to="/contact" className={navLinkStyle}>
               Contact
             </NavLink>
+            <NavLink to="/cart" className={navLinkStyle}>
+              Cart
+            </NavLink>
           </nav>
 
           <div className="flex items-center space-x-5 text-gray-600">
@@ -47,9 +53,19 @@ export const Header = () => {
               <FiSearch className="text-xl" />
             </button>
             <button className="hover:text-orange-500 transition-colors p-2 rounded-full hover:bg-orange-50 hidden sm:block">
-              <FiUser className="text-xl" />
+              <FiUser
+                onClick={() => {
+                  navigate("/account");
+                }}
+                className="text-xl"
+              />
             </button>
-            <button className="hover:text-orange-500 transition-colors p-2 rounded-full hover:bg-orange-50 relative">
+            <button
+              onClick={() => {
+                setCartPopUpToggle(true);
+              }}
+              className="hover:text-orange-500 transition-colors p-2 rounded-full hover:bg-orange-50 relative"
+            >
               <FiShoppingCart className="text-xl" />
               <span className="absolute top-1.5 right-1.5 flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
